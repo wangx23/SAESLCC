@@ -1,0 +1,11 @@
+Package: SAESLCC
+Type: Package
+Title: Linear clustered coefficent regression models in SAE
+Version: 1.0
+Date: 2023-08-15
+Author: Xin Wang
+Maintainer: Xin Wang <wangxin8923@gmail.com>
+Description: SAESLCC provides three linear clustered coefficient regression models in small area estimation
+License: GPL (>= 2)
+Imports: Rcpp (>= 1.0.9)
+LinkingTo: Rcpp, RcppArmadillo
