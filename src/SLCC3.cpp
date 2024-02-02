@@ -110,7 +110,7 @@ Rcpp::List SLCC3(arma::vec indexy,arma::vec &y, arma::mat &x, arma::vec &group,
         }
 
         if(indexl.size() > 1){
-          deltavec(indexl) = scad(deltavec(indexl),weights(i)*lam);
+          deltavec(indexl) = scad(deltavec(indexl),weights(i)*sqrt(indexl.size())*lam);
         }
       }
       deltam.col(i) = deltavec;
