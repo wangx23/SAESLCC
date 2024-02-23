@@ -1,14 +1,26 @@
-####### this code gives estimator for SR ####
-## it implies several procedures ####
-# step 1: use SLCC function to find group based on standardized data (using a loop)
-# step 2: use the group result to construct the new estimator
-# area: area id
-# lambda, a sequence of lambda
-# add intercept automatically
+#' this code gives estimator for SR. 
+#' 
+#' 
+#' @description It implies several procedures.
+#' Step 1: use SLCC function to find group based on standardized data (using a loop). 
+#' Step 2: use the group result to construct the new estimator
+#' 
+#' @param area area id
+#' @param y response
+#' @param x covariates, add intercept automatically
+#' @param Xbar population mean
+#' @param wts sampling weights
+#' @param N popualtion size 
+#' @param model three models: "intercept" (model 1), "creg" (model 2) and "ccreg" (model 3)
+#' @param group in model 3
+#' @param lambda tuning vector
+#' @param standardize TRUE or FALSE, standardize y and x or not
+#' 
+#' @return list
+#' @export
 
-### three models, "intercept" (model 1), "creg" (model 2) and "ccreg" (model 3)
 SLCC_SR <- function(area, y, x, Xbar, 
-                    wts, N, model, group=NULL, lambda)
+                    wts, N, model, group=NULL, lambda,standardize = TRUE)
 {
   nt <- length(y)
   m <- length(unique(area))
@@ -18,8 +30,15 @@ SLCC_SR <- function(area, y, x, Xbar,
   ## can be adjusted for spatial data
   
   ## ### scale version for model fitting
-  y_sc <- scale(y) 
-  x_sc <- apply(x,2,scale) ### scale version for model fitting
+  if(standardize)
+  {
+    y_sc <- scale(y) 
+    x_sc <- apply(x,2,scale) ### scale version for model fitting
+  }else{
+    y_sc <- y
+    x_sc <- x
+  }
+
   xintercept <- matrix(1, nrow = nt)
   
   if(model == "intercept")
@@ -109,6 +128,7 @@ SLCC_SR <- function(area, y, x, Xbar,
 
   out <- list(resm = resm, BICm = BICm,
               refit = refit_SR, cluster = resm$cluster, 
-              estY =  refit_SR$estY)
+              estY =  refit_SR$estY,
+              init = betam01)
   return(out)
 }

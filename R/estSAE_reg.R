@@ -1,5 +1,15 @@
-####### based on common regression models, three type of estimators
-#wts: sampling weights
+#' based on common regression models, three type of estimators
+#' @param area area id
+#' @param y response
+#' @param x covariates intercept will be added
+#' @param Xbar population mean
+#' @param wts sampling weights
+#' @param N area size
+#' 
+#' @return list
+#' @export
+
+
 estSAE_reg <- function(area, y, x, Xbar, wts, N)
 {
   ni <- as.numeric(table(area))
