@@ -20,7 +20,8 @@
 #' @export
 
 SLCC_SR <- function(area, y, x, Xbar, 
-                    wts, N, model, group=NULL, lambda,standardize = TRUE)
+                    wts, N, model, group=NULL, lambda,
+                    standardize = TRUE, center = TRUE)
 {
   nt <- length(y)
   m <- length(unique(area))
@@ -32,13 +33,13 @@ SLCC_SR <- function(area, y, x, Xbar,
   ## ### scale version for model fitting
   if(standardize)
   {
-    y_sc <- scale(y) 
-    x_sc <- apply(x,2,scale) ### scale version for model fitting
+    y_sc <- scale(y, center = center) 
+    x_sc <- apply(x,2,function(x) scale(x, center = center)) ### scale version for model fitting
   }else{
     y_sc <- y
     x_sc <- x
   }
-
+  
   xintercept <- matrix(1, nrow = nt)
   
   if(model == "intercept")
