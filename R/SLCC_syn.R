@@ -34,8 +34,8 @@ SLCC_syn <- function(area, y, x, Xbar,
   ## ### scale version for model fitting
   if(standardize)
   {
-    y_sc <- scale(y, center = center) 
-    x_sc <- apply(x,2,function(x) scale(x, center = center)) ### scale version for model fitting
+    y_sc <- scale(y, center = center, scale = sd(y))
+    x_sc <- scale(x, center = center, scale = apply(x, 2, sd, na.rm = TRUE))### scale version for model fitting
   }else{
     y_sc <- y
     x_sc <- x
