@@ -80,6 +80,7 @@ SLCC_syn <- function(area, y, x, Xbar,
   
   if(model == "creg")
   {
+    Cm <- log(m*(1+ncol(x)))
     ngest = rep(0, nlam)
     
     for(j in 1:nlam)
@@ -105,6 +106,7 @@ SLCC_syn <- function(area, y, x, Xbar,
   
   if(model == "ccreg")
   {
+    Cm <- log(m*(1+ncol(x)))
     ngest = rep(0, nlam)
     
     for(j in 1:nlam)

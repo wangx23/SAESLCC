@@ -81,7 +81,7 @@ SLCC_comp <- function(area, y, x, Xbar,
   if(model == "creg")
   {
     ngest = rep(0, nlam)
-    
+    Cm <- log(m*(1+ncol(x)))
     for(j in 1:nlam)
     {
       resj <- SLCC2(indexy = area,y = y_sc, x = cbind(1, x_sc),
@@ -106,7 +106,7 @@ SLCC_comp <- function(area, y, x, Xbar,
   if(model == "ccreg")
   {
     ngest = rep(0, nlam)
-    
+    Cm <- log(m*(1+ncol(x)))
     for(j in 1:nlam)
     {
       resj <- SLCC3(indexy = area,y = y_sc, x = cbind(1,x_sc),group = group,
