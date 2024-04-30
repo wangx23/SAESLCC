@@ -9,7 +9,8 @@ estSAE_syn <- function(obj, indexy, y, x, Xbar, z=NULL, Zbar = NULL,
 {
   cluster_est <- obj$cluster
   nivec <- as.numeric(table(indexy))
-  wtilde <- rep(1/N, nivec) * wts ### adjusted weight in the algorithm
+  Nbar <- mean(N)
+  wtilde  <- rep(1/Nbar, nivec) * wts ### adjusted weight in the algorithm
   if(model =="intercept")
   {
     res_refit <- refit_m1(indexy = indexy, y = y, x=x, z=z,
