@@ -14,7 +14,7 @@ estSAE_reg <- function(area, y, x, Xbar, wts, N)
 {
   ni <- as.numeric(table(area))
   ybari <- as.numeric(by(y, area, mean))
-  Nbar <- mean(N)
+  Nbar <- rep(mean(N), length(N))
   wtilde  <- rep(1/Nbar, nivec) * wts ### adjusted weight in the algorithm
   Wd <- diag(wtilde)
   betahat <- solve(t(x) %*% Wd %*% x)%*% t(x) %*% Wd %*% y

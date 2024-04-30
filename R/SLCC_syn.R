@@ -27,7 +27,7 @@ SLCC_syn <- function(area, y, x, Xbar,
   nt <- length(y)
   m <- length(unique(area))
   nivec <- as.numeric(table(area))
-  Nbar <- mean(N)
+  Nbar <- rep(mean(N), length(N))
   wtilde  <- rep(1/Nbar, nivec) * wts ### adjusted weight in the algorithm
   weights <- rep(1, m*(m-1)/2) ### pairwise weights (cij) in the algorithm,
   ## can be adjusted for spatial data
