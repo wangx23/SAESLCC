@@ -10,7 +10,8 @@ bootstrap_SR <-function(obj, area, y, x, Xbar, wts, N, model,
 {
   
   nivec <- as.numeric(table(area))
-  wtilde <- rep(1/N, nivec) * wts ### adjusted weight in the algorithm
+  Nbar <- rep(mean(N), length(N))
+  wtilde <- rep(1/Nbar, nivec) * wts ### adjusted weight in the algorithm
   m <- length(N)
   uarea <- unique(area)
 

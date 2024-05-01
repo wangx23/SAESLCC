@@ -11,7 +11,7 @@ estSAE_comp <- function(obj, indexy, y, x, Xbar, z=NULL, Zbar = NULL,
   cluster_est <- obj$cluster
   ni <- as.numeric(table(indexy))
   Nbar <- rep(mean(N), length(N))
-  wtilde  <- rep(1/Nbar, nivec) * wts ### adjusted weight in the algorithm
+  wtilde  <- rep(1/Nbar, ni) * wts ### adjusted weight in the algorithm
   if(model =="intercept")
   {
     res_refit <- refit_m1(indexy = indexy, y = y, x=x, z=z,
