@@ -11,7 +11,7 @@ Rcpp::List SLCC3(arma::vec indexy,arma::vec &y, arma::mat &x, arma::vec &group,
                  arma::vec &weights, arma::vec &wtilde, 
                  arma::mat &betam0,
                  double nu = 1, double gam = 3, double lam = 0.5 ,
-                 int maxiter = 1000, double tolabs = 1e-4, double tolrel = 1e-2)
+                 int maxiter = 1000, double tolabs = 1e-4, double tolrel = 1e-4)
 {
   int nt = x.n_rows;
   int p = x.n_cols;
