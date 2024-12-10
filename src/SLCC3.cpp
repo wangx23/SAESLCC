@@ -130,7 +130,8 @@ Rcpp::List SLCC3(arma::vec indexy,arma::vec &y, arma::mat &x, arma::vec &group,
 
     deltamold = deltam;
 
-    if(rm <= tolpri & sm <= toldual)
+    //if(rm <= tolpri & sm <= toldual)
+    if(rm <= tolpri)
       break;
   }
 
